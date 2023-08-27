@@ -88,12 +88,12 @@ function validateRadio(radio) {
   let selectedRadio;
   for (let listeBtnRadio of listeBtnRadios) {
     if (listeBtnRadio.checked) {
-      selectedRadio = listeBtnRadio.value;
-      // console.log(selectedRadio)
-      break;
-    } else {
-      throw new Error (`Vous devez choisir une ville`)
-    }
+      selectedRadio = listeBtnRadio.checked;
+      console.log(selectedRadio)
+    } 
+  }
+  if (selectedRadio !== true) {
+    throw new Error (`Vous devez choisir une ville`)
   }
 }
 
@@ -118,7 +118,7 @@ function validateCondition(condition) {
   // let array = Array.from(formData)
   // let res = array.map(item => {return item.value})
   let read = document.getElementById("checkbox1")
-  console.log(read.checked)
+  // console.log(read.checked)
   if (!read.checked) {
     throw new Error (`Veuillez lire et accepter les conditions d'utilisation`)  
   }
