@@ -124,6 +124,24 @@ function validateCondition(condition) {
   }
 }
 
+// Display error message
+function displayErrorMessage(message) {
+    
+  let spanErrorMessage = document.getElementById("errorMessage")
+
+  if (!spanErrorMessage) {
+      let submitError = document.querySelector(".btn-submit")
+      spanErrorMessage = document.createElement("span")
+      spanErrorMessage.id = "errorMessage"
+      
+      submitError.append(spanErrorMessage)
+
+      window.confirm(message)
+  }
+  
+  spanErrorMessage.innerText = message
+}
+
 // Validate form
 function validateForm(field){
   validateName(field)
@@ -132,19 +150,32 @@ function validateForm(field){
   validateTounament(field)
   validateRadio(field)
   validateCondition(field)
+  displayErrorMessage("")
 }
 
+// Confirmation
+function confirmation(firstName) {
+  window.confirm(`Merci ${firstName} de ton inscription`)
+  closeModal()
+}
 
+// Cheacking modal
 form.addEventListener("submit", (e) => {
-  e.preventDefault()
-  // console.log(formData)
-  let array = Array.from(formData)
-  let res = array.map(item => {return item.value})
-  // console.log(res)
-  for (i = 0; i < res.length; i++) {
-    // console.log(res[i])
-    // console.log(array[i])
-    // console.log(array[i].type)
-    validateForm(res) 
-  }
+  try {
+    e.preventDefault()
+    // console.log(formData)
+    let array = Array.from(formData)
+    let res = array.map(item => {return item.value})
+    // console.log(res)
+    for (i = 0; i < res.length; i++) {
+      // console.log(res[i])
+      // console.log(array[i])
+      // console.log(array[i].type)
+      validateForm(res)  
+    }
+    confirmation(res[0])
+  } 
+  catch (error) {
+    displayErrorMessage(error.message)
+  }   
 });
