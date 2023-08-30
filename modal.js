@@ -135,10 +135,19 @@ function displayErrorMessage(message) {
       spanErrorMessage.id = "errorMessage"
       
       submitError.append(spanErrorMessage)
+      submitError.style.border = "2px; red"
   }
-  let ErrorStyle = document.getElementById("errorMessage")
-  ErrorStyle.style.color = "red"
-  ErrorStyle.style.fontSize = "70%"
+  let errorStyle = document.getElementById("errorMessage")
+  let textControl = document.querySelector(".text-control")
+
+  errorStyle.style.cssText = `
+    font-size: 70%;
+    color: red
+    `
+  textControl.style.cssText = `
+    border: red solid
+    `
+
   spanErrorMessage.innerText = message
 }
 
@@ -165,11 +174,18 @@ function confirmation(firstName) {
     `
   modalBody.innerHTML = thanks
 
-  modalBody.style.display = "flex"
-  modalBody.style.flexDirection = "column"
-  modalBody.style.justifyContent = "space-between"
-  modalBody.style.alignItems = "center"
-  modalBody.style.height = "600px"
+  modalBody.style.cssText = `
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 600px
+    `
+  // modalBody.style.display = "flex"
+  // modalBody.style.flexDirection = "column"
+  // modalBody.style.justifyContent = "space-between"
+  // modalBody.style.alignItems = "center"
+  // modalBody.style.height = "600px"
 
   document.querySelector(".fermerButton").addEventListener("click", () => {
     // console.log("Bye!")
