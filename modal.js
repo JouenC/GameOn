@@ -89,7 +89,7 @@ function validateRadio(radio) {
   for (let listeBtnRadio of listeBtnRadios) {
     if (listeBtnRadio.checked) {
       selectedRadio = listeBtnRadio.checked;
-      console.log(selectedRadio)
+      // console.log(selectedRadio)
     } 
   }
   if (selectedRadio !== true) {
@@ -171,7 +171,11 @@ function confirmation(firstName) {
   modalBody.style.alignItems = "center"
   modalBody.style.height = "600px"
 
-  // document.querySelector(".fermerButton").addEventListener("click", closeModal())
+  document.querySelector(".fermerButton").addEventListener("click", () => {
+    // console.log("Bye!")
+    closeModal()
+    // modalbg.style.display = "none"
+  })
   // window.confirm(`Merci ${firstName} de ton inscription`)
   // closeModal()
 }
