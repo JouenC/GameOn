@@ -130,15 +130,15 @@ function displayErrorMessage(message) {
   let spanErrorMessage = document.getElementById("errorMessage")
 
   if (!spanErrorMessage) {
-      let submitError = document.querySelector(".btn-submit")
+      let submitError = document.querySelector(".formData")
       spanErrorMessage = document.createElement("span")
       spanErrorMessage.id = "errorMessage"
       
       submitError.append(spanErrorMessage)
-
-      window.confirm(message)
   }
-  
+  let ErrorStyle = document.getElementById("errorMessage")
+  ErrorStyle.style.color = "red"
+  ErrorStyle.style.fontSize = "70%"
   spanErrorMessage.innerText = message
 }
 
@@ -155,8 +155,25 @@ function validateForm(field){
 
 // Confirmation
 function confirmation(firstName) {
-  window.confirm(`Merci ${firstName} de ton inscription`)
-  closeModal()
+  let modalBody = document.querySelector(".modal-body")
+  let thanks = `
+    <div></div>
+    <div>Merci ${firstName} de ton inscription</div>
+    <button class="btn-submit fermerButton">
+          Fermer
+        </button>
+    `
+  modalBody.innerHTML = thanks
+
+  modalBody.style.display = "flex"
+  modalBody.style.flexDirection = "column"
+  modalBody.style.justifyContent = "space-between"
+  modalBody.style.alignItems = "center"
+  modalBody.style.height = "600px"
+
+  // document.querySelector(".fermerButton").addEventListener("click", closeModal())
+  // window.confirm(`Merci ${firstName} de ton inscription`)
+  // closeModal()
 }
 
 // Cheacking modal
