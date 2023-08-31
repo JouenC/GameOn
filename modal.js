@@ -140,6 +140,7 @@ function displayErrorMessage(message) {
   let errorStyle = document.getElementById("errorMessage")
   let textControl = document.querySelector(".text-control")
 
+  // Message's style
   errorStyle.style.cssText = `
     font-size: 70%;
     color: red
@@ -147,7 +148,7 @@ function displayErrorMessage(message) {
   textControl.style.cssText = `
     border: red solid
     `
-
+  // Message's text
   spanErrorMessage.innerText = message
 }
 
@@ -174,6 +175,7 @@ function confirmation(firstName) {
     `
   modalBody.innerHTML = thanks
 
+  // Confirmation's style
   modalBody.style.cssText = `
     display: flex;
     flex-direction: column;
@@ -187,6 +189,7 @@ function confirmation(firstName) {
   // modalBody.style.alignItems = "center"
   // modalBody.style.height = "600px"
 
+  // Close Modal
   document.querySelector(".fermerButton").addEventListener("click", () => {
     // console.log("Bye!")
     closeModal()
