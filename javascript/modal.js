@@ -25,21 +25,24 @@ closeBtn.addEventListener("click", closeModal);
 
 // Cheacking modal
 form.addEventListener("submit", (e) => {
+  let element = null;
   try {
-    e.preventDefault()
+    e.preventDefault();
     // console.log(formData)
-    let array = Array.from(formData)
-    let res = array.map(item => {return item.value})
+    let array = Array.from(formData);
+    array.forEach((input) => {
+      element = input;
+      validateForm(input);
+    });
     // console.log(res)
-    for (i = 0; i < res.length; i++) {
-      // console.log(res[i])
-      // console.log(array[i])
-      // console.log(array[i].type)
-      validateForm(res)  
-    }
-    confirmation(res[0])
-  } 
-  catch (error) {
-    displayErrorMessage(error.message)
-  }   
+    // for (i = 0; i < res.length; i++) {
+    //   // console.log(res[i])
+    //   // console.log(array[i])
+    //   // console.log(array[i].type)
+    // validateForm(res)
+    // }
+    confirmation(res[0]);
+  } catch (error) {
+    displayErrorMessage(error.message, element);
+  }
 });
