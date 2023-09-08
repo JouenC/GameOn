@@ -2,29 +2,43 @@
 
 // Validate fist name and last name
 function validateName(name) {
-    let array = Array.from(formData)
-    let res = array.map(item => {return item.value})
-    if (array[i].type === "text") {
-        if (res[i] === "") {
-          throw new Error (`Veuillez renseigner votre ${array[i].name}`)
-        }
-        if (res[i].length < 2) {
-          console.log("Nom trop court")
-          throw new Error (`Le ${array[i].name} doit contenir au moins 2 caractères`)
-        }
-      }
+  if (!name) {
+    throw new Error(`Veuillez renseigner votre ${name}`);
+  }
+  if (name.length < 2) {
+    console.log("Nom trop court");
+    throw new Error(`Cette entrée doit contenir au moins 2 caractères`);
+  }
+    // let array = Array.from(formData)
+    // let res = array.map(item => {return item.value})
+    // if (array[i].type === "text") {
+    //     if (res[i] === "") {
+    //       throw new Error (`Veuillez renseigner votre ${array[i].name}`)
+    //     }
+    //     if (res[i].length < 2) {
+    //       console.log("Nom trop court")
+    //       throw new Error (`Le ${array[i].name} doit contenir au moins 2 caractères`)
+    //     }
+    //   }
   }
   
   // validate email
   function validateEmail(email) {
-    let array = Array.from(formData)
-    let res = array.map(item => {return item.value})
-    if (array[i].type === "email") {
-      let emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+")
-      if (!emailRegExp.test(res[i])) {
-        throw new Error (`Veuillez renseigner un ${array[i].name} valide`)
+    function validateEmail(email) {
+      let emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
+      if (!emailRegExp.test(email)) {
+        throw new Error(`Veuillez renseigner un email valide`);
       }
     }
+    
+    // let array = Array.from(formData)
+    // let res = array.map(item => {return item.value})
+    // if (array[i].type === "email") {
+    //   let emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+")
+    //   if (!emailRegExp.test(res[i])) {
+    //     throw new Error (`Veuillez renseigner un ${array[i].name} valide`)
+    //   }
+    // }
   }
   
   // validate date
@@ -95,12 +109,22 @@ function validateName(name) {
   }
 
 // Validate form
-function validateForm(field){
-    validateName(field)
-    validateEmail(field)
-    validateDate(field)
-    validateTounament(field)
-    validateRadio(field)
-    validateCondition(field)
-    displayErrorMessage("")
+function validateForm(input){
+  cleanUp()
+  const fns = {
+    first: () => validateName(input.value),
+    last: () => validateName(input.value),
+    email: () => validateEmail(input.value),
+    birthdate: () => validateDate(input.value),
+  }
+  fns[input.id]()
+  // console.log(input.value)
+  // console.log(input.id)
+  // validateName(field)
+  // validateEmail(field)
+  // validateDate(field)
+  // validateTounament(field)
+  // validateRadio(field)
+  // validateCondition(field)
+  // displayErrorMessage("")
   }
