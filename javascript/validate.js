@@ -2,6 +2,7 @@
 
 // Validate fist name and last name
 function validateName(name) {
+  console.log(name);
   if (!name) {
     throw new Error(`Veuillez renseigner votre nom`)
   }

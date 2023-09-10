@@ -25,7 +25,7 @@ closeBtn.addEventListener("click", closeModal)
 
 // Cheacking modal
 form.addEventListener("submit", (e) => {
-  let element = null
+  let element = null;
   try {
     e.preventDefault()
     let array = Array.from(formData)
@@ -38,7 +38,10 @@ form.addEventListener("submit", (e) => {
     //   // console.log(array[i].type)
     // console.log(inputArray)
     // validateForm(inputArray)
+    // console.log(inputArray)
+    // validateForm(inputArray)
     // }
+
 
     array.forEach((input) => {
       element = input;
