@@ -33,8 +33,8 @@ function displayErrorMessage(message, input) {
   errorStyle.style.cssText = `
     font-size: 70%;
     color: red
-    `;
-    `;
+    `
+    
   // Message's text
   spanErrorMessage.innerText = message;
 }

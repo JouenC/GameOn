@@ -29,7 +29,7 @@ form.addEventListener("submit", (e) => {
   try {
     e.preventDefault()
     let array = Array.from(formData)
-    // let res = array.map(item => {return item.value})
+    let res = array.map(item => {return item.value})
     // let inputArray = array.map(item => {return item.id})
     // console.log(res)
     // for (i = 0; i < res.length; i++) {

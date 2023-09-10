@@ -2,7 +2,6 @@
 
 // Validate fist name and last name
 function validateName(name) {
-  console.log(name);
   if (!name) {
     throw new Error(`Veuillez renseigner votre nom`)
   }
@@ -82,24 +81,24 @@ function validateTournament(number) {
 }
 
 // Validate radio button
-function validateRadio(radio) {
-  console.log(radio)
-  if (radio !== true) {
-    throw new Error(`Vous devez choisir une ville`)
-  }
-  // let listeBtnRadios = document.querySelectorAll('input[type="radio"]')
-  // let selectedRadio
-  // console.log(listeBtnRadios)
-  // for (let listeBtnRadio of listeBtnRadios) {
-  //   if (listeBtnRadio.checked) {
-  //     selectedRadio = listeBtnRadio.checked
-  //     console.log(selectedRadio)
-  //     break
-  //   }
-  // }
-  // if (selectedRadio !== true) {
+function validateRadio() {
+  // console.log(radio)
+  // if (radio !== true) {
   //   throw new Error(`Vous devez choisir une ville`)
   // }
+  let listeBtnRadios = document.querySelectorAll('input[type="radio"]')
+  let selectedRadio
+  // console.log(listeBtnRadios)
+  for (let listeBtnRadio of listeBtnRadios) {
+    if (listeBtnRadio.checked) {
+      selectedRadio = listeBtnRadio.checked
+      // console.log(selectedRadio)
+      break
+    }
+  }
+  if (selectedRadio !== true) {
+    throw new Error(`Vous devez choisir une ville`)
+ }
 }
 
 //   let array = Array.from(formData)
@@ -129,6 +128,9 @@ function validateCondition(read) {
   }
 }
 
+function validateAuto () {
+}
+
 // Validate form
 function validateForm(input) {
   cleanUp()
@@ -138,8 +140,14 @@ function validateForm(input) {
     email: () => validateEmail(input.value),
     birthdate: () => validateDate(input.value),
     quantity: () => validateTournament(input.value),
-    location1: () => validateRadio(input.checked),
-    checkbox1: () => validateCondition(input.checked)
+    location1: () => validateRadio(),
+    location2: () => validateRadio(),
+    location3: () => validateRadio(),
+    location4: () => validateRadio(),
+    location5: () => validateRadio(),
+    location6: () => validateRadio(),
+    checkbox1: () => validateCondition(input.checked),
+    checkbox2: () => validateAuto()
   }
   fns[input.id]()
   // console.log(input.value)
