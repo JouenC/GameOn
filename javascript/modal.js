@@ -1,34 +1,33 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
+  var x = document.getElementById("myTopnav")
   if (x.className === "topnav") {
-    x.className += " responsive";
+    x.className += " responsive"
   } else {
-    x.className = "topnav";
+    x.className = "topnav"
   }
 }
 
 // launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal))
 
 // launch modal form
 function launchModal() {
-  modalbg.style.display = "block";
+  modalbg.style.display = "block"
 }
 
 // close modal form
 function closeModal() {
-  modalbg.style.display = "none";
+  modalbg.style.display = "none"
 }
 
 // close modal event
-closeBtn.addEventListener("click", closeModal);
+closeBtn.addEventListener("click", closeModal)
 
 // Cheacking modal
 form.addEventListener("submit", (e) => {
   let element = null
   try {
     e.preventDefault()
-    console.log(formData)
     let array = Array.from(formData)
     // let res = array.map(item => {return item.value})
     // let inputArray = array.map(item => {return item.id})
@@ -37,19 +36,16 @@ form.addEventListener("submit", (e) => {
     //   // console.log(res[i])
     //   // console.log(array[i])
     //   // console.log(array[i].type)
-  // console.log(inputArray)
-  // validateForm(inputArray)  
+    // console.log(inputArray)
+    // validateForm(inputArray)
     // }
-    
+
     array.forEach((input) => {
-      element = input.id
-      console.log(element)
-      validateForm(element)
-      
-    })
+      element = input;
+      validateForm(input)
+    });
     confirmation(res[0])
-  } 
-  catch (error) {
+  } catch (error) {
     displayErrorMessage(error.message, element)
-  }   
-});
+  }
+})
