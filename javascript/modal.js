@@ -29,7 +29,8 @@ form.addEventListener("submit", (e) => {
   try {
     e.preventDefault()
     let array = Array.from(formData)
-    let res = array.map(item => {return item.value})
+    // let res = array.map(item => {return item.value})
+    let res = document.getElementById("first")
     // let inputArray = array.map(item => {return item.id})
     // console.log(res)
     // for (i = 0; i < res.length; i++) {
@@ -47,7 +48,7 @@ form.addEventListener("submit", (e) => {
       element = input;
       validateForm(input)
     });
-    confirmation(res[0])
+    confirmation(res.value)
   } catch (error) {
     displayErrorMessage(error.message, element)
   }

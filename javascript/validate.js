@@ -141,11 +141,11 @@ function validateForm(input) {
     birthdate: () => validateDate(input.value),
     quantity: () => validateTournament(input.value),
     location1: () => validateRadio(),
-    location2: () => validateRadio(),
-    location3: () => validateRadio(),
-    location4: () => validateRadio(),
-    location5: () => validateRadio(),
-    location6: () => validateRadio(),
+    location2: () => validateAuto(),
+    location3: () => validateAuto(),
+    location4: () => validateAuto(),
+    location5: () => validateAuto(),
+    location6: () => validateAuto(),
     checkbox1: () => validateCondition(input.checked),
     checkbox2: () => validateAuto()
   }
