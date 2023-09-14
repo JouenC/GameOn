@@ -65,9 +65,12 @@ function validateDate(date) {
 // Validate number of tournament
 function validateTournament(number) {
   if (!parseInt(number) && number !== "0") {
-  // if (!parseInt(number) ||  0 > number || number > 100 || number !== "0") {
+  // if (!parseInt(number)) {
     throw new Error(`Veuillez renseigner un nombre entier`)
-  }
+  } if (number > 99) {
+    throw new Error(`Veuillez renseigner un nombre inférieur à 100`)
+  } if (number < 0) {
+    throw new Error(`Veuillez renseigner un nombre supérieur ou égal à 0`)
   // let array = Array.from(formData)
   // let res = array.map((item) => {
   //   return item.value
@@ -77,7 +80,7 @@ function validateTournament(number) {
   //   if (!parseInt(res[i]) && res[i] !== "0") {
   //     throw new Error(`Veuillez renseigner un nombre entier`)
   //   }
-  // }
+  }
 }
 
 // Validate radio button
