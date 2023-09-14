@@ -28,20 +28,16 @@ form.addEventListener("submit", (e) => {
   let element = null;
   try {
     e.preventDefault();
-    // console.log(formData)
     let array = Array.from(formData);
-    array.forEach((input) => {
+
+    const final = array.filter((item) => !item.id.startsWith("location"));
+    const finalElementList = [...final, locationFormData];
+
+    finalElementList.forEach((input) => {
       element = input;
       validateForm(input);
     });
-    // console.log(res)
-    // for (i = 0; i < res.length; i++) {
-    //   // console.log(res[i])
-    //   // console.log(array[i])
-    //   // console.log(array[i].type)
-    // validateForm(res)
-    // }
-    confirmation(res[0]);
+    confirmation(res.value);
   } catch (error) {
     displayErrorMessage(error.message, element);
   }
