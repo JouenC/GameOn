@@ -42,12 +42,20 @@ form.addEventListener("submit", (e) => {
     // console.log(inputArray)
     // validateForm(inputArray)
     // }
+    const final = array.filter((item) => !item.id.startsWith("location"))
+    final.pop()
+    const finalElementList = [...final, locationFormData]
+    // console.log(finalElementList)
 
-
-    array.forEach((input) => {
-      element = input;
+    finalElementList.forEach((input) => {
+      element = input
       validateForm(input)
-    });
+    })
+
+    // array.forEach((input) => {
+    //   element = input;
+    //   validateForm(input)
+    // })
     confirmation(res.value)
   } catch (error) {
     displayErrorMessage(error.message, element)

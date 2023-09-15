@@ -8,27 +8,39 @@ function displayErrorMessage(message, input) {
   let spanErrorMessage = document.createElement("span");
   spanErrorMessage.className = "errorMessage";
 
-  let submitError = document.querySelector(`.formData > #${input.id}`)
+  let submitError
+
+  if (input.id === "location") {
+    submitError = input
+    submitError.after(spanErrorMessage)
+  } else {
+    submitError = document.querySelector(`.formData > #${input.id}`)
+    submitError.after(spanErrorMessage)
+    submitError.style.border = "2px solid red"
+  }
+
+
+  // let submitError = document.querySelector(`.formData > #${input.id}`)
   spanErrorMessage.id = "errorMessage"
 
-  console.log(`${input.id}`)
+  // console.log(`${input.id}`)
 
   // let errorStyle = document.getElementById("errorMessage")
 
-  if(`${input.id}` === "location1") {
-    let location = document.querySelector(".text-label")
-    location.after(spanErrorMessage)
-  } 
+  // if(`${input.id}` === "location1") {
+  //   let location = document.querySelector(".text-label")
+  //   location.after(spanErrorMessage)
+  // } 
   
   if (`${input.id}` === "checkbox1") {
     let read = document.querySelector(".btn-submit")
     read.before(spanErrorMessage)
   }
   
-  if (!(`${input.id}` === "location1") && !(`${input.id}` === "checkbox1")){
-    submitError.after(spanErrorMessage)
-    submitError.style.border = "2px solid red"
-  }
+  // if (!(`${input.id}` === "location1") && !(`${input.id}` === "checkbox1")){
+  //   submitError.after(spanErrorMessage)
+  //   submitError.style.border = "2px solid red"
+  // }
 
   
 
