@@ -18,14 +18,6 @@ function validateEmail(email) {
   }
 }
 
-// validate date
-// function validateDate(date) {
-//   let dateRegExp = new RegExp("\\d{4}-(((0)[0-9])|((1)[0-2]))-([0-2][0-9]|(3)[0-1])")
-//   if (!dateRegExp.test(date)) {
-//     throw new Error(`Veuillez renseigner votre date de naissance au format jj/mm/aaaa`)
-//   }
-// }
-
 function validateDate(date) {
 
   // Divisez la date en jour, mois et année
@@ -33,10 +25,6 @@ function validateDate(date) {
   const jour = parseInt(parts[2], 10);
   const mois = parseInt(parts[1], 10);
   const annee = parseInt(parts[0], 10);
-  console.log(date)
-  console.log(jour)
-  console.log(mois)
-  console.log(annee)
   
   // Obtenez la date actuelle
   const dateActuelle = new Date();
@@ -51,9 +39,7 @@ function validateDate(date) {
   ) {
     age--;
   }
-  console.log(age)
   // Vérifiez si la personne est majeure (âge >= 18)
-  // return age >= 18;
   let dateRegExp = new RegExp("\\d{4}-(((0)[0-9])|((1)[0-2]))-([0-2][0-9]|(3)[0-1])")
   if (!dateRegExp.test(date)) {
     throw new Error(`Veuillez renseigner votre date de naissance au format jj/mm/aaaa`)
@@ -61,14 +47,6 @@ function validateDate(date) {
     throw new Error(`Vous devez être majeur pour participer`)
   }
 }
-  
-// Exemple d'utilisation :
-// const dateDeNaissance = '14/09/2000'; // Remplacez ceci par la date de naissance de la personne
-// if (estMajeur(dateDeNaissance)) {
-//   console.log('La personne est majeure.');
-// } else {
-//   console.log('La personne n\'est pas majeure.');
-// }
 
 // Validate number of tournament
 function validateTournament(number) {
@@ -86,7 +64,6 @@ function validateTournament(number) {
 function validateRadio(input) {
   let listeBtnRadios = input.querySelectorAll('input[type="radio"]')
   let selectedRadio
-  // console.log(listeBtnRadios)
   for (let listeBtnRadio of listeBtnRadios) {
     if (listeBtnRadio.checked) {
       selectedRadio = listeBtnRadio.checked
@@ -119,7 +96,6 @@ function validateForm(input) {
     quantity: () => validateTournament(input.value),
     location: () => validateRadio(input),
     checkbox1: () => validateCondition(input.checked),
-    // checkbox2: () => validateAuto()
   }
   fns[input.id]()
 }

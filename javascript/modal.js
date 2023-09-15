@@ -29,33 +29,15 @@ form.addEventListener("submit", (e) => {
   try {
     e.preventDefault()
     let array = Array.from(formData)
-    // let res = array.map(item => {return item.value})
     let res = document.getElementById("first")
-    // let inputArray = array.map(item => {return item.id})
-    // console.log(res)
-    // for (i = 0; i < res.length; i++) {
-    //   // console.log(res[i])
-    //   // console.log(array[i])
-    //   // console.log(array[i].type)
-    // console.log(inputArray)
-    // validateForm(inputArray)
-    // console.log(inputArray)
-    // validateForm(inputArray)
-    // }
     const final = array.filter((item) => !item.id.startsWith("location"))
     final.pop()
     const finalElementList = [...final, locationFormData]
-    // console.log(finalElementList)
-
     finalElementList.forEach((input) => {
       element = input
       validateForm(input)
     })
 
-    // array.forEach((input) => {
-    //   element = input;
-    //   validateForm(input)
-    // })
     confirmation(res.value)
   } catch (error) {
     displayErrorMessage(error.message, element)
