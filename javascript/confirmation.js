@@ -1,5 +1,3 @@
-// confirmation
-
 // Confirmation
 function confirmation(firstName) {
     let modalBody = document.querySelector(".modal-body")

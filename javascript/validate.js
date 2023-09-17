@@ -1,16 +1,18 @@
-// validate
-
 // Validate fist name and last name
 function validateName(name) {
+
+  // If name's field is empy, return error
   if (!name) {
     throw new Error(`Veuillez renseigner votre nom`)
   }
+
+  // If name's field lenght is too short, return error
   if (name.length < 2) {
     throw new Error(`Cette entrée doit contenir au moins 2 caractères`)
   }
 }
 
-// validate email
+// Validate email
 function validateEmail(email) {
   let emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+")
   if (!emailRegExp.test(email)) {
@@ -18,31 +20,35 @@ function validateEmail(email) {
   }
 }
 
+// Validate date
 function validateDate(date) {
 
-  // Divisez la date en jour, mois et année
+  // Divide the date into day, month and year
   const parts = date.split('-');
-  const jour = parseInt(parts[2], 10);
-  const mois = parseInt(parts[1], 10);
-  const annee = parseInt(parts[0], 10);
+  const jour = parseInt(parts[2], 10)
+  const mois = parseInt(parts[1], 10)
+  const annee = parseInt(parts[0], 10)
   
-  // Obtenez la date actuelle
-  const dateActuelle = new Date();
+  // Current date
+  const dateActuelle = new Date()
   
-  // Calculez l'âge en soustrayant l'année de naissance de l'année actuelle
-  let age = dateActuelle.getFullYear() - annee;
+  // Calculate age by subtracting year of birth from current year
+  let age = dateActuelle.getFullYear() - annee
   
-  // Vérifiez si l'anniversaire est déjà passé cette année
+  // Check if the birthday has already passed this year
   if (
     dateActuelle.getMonth() < mois - 1 ||
     (dateActuelle.getMonth() === mois - 1 && dateActuelle.getDate() < jour)
   ) {
-    age--;
+    age--
   }
-  // Vérifiez si la personne est majeure (âge >= 18)
+
+  // Check date's field
   let dateRegExp = new RegExp("\\d{4}-(((0)[0-9])|((1)[0-2]))-([0-2][0-9]|(3)[0-1])")
   if (!dateRegExp.test(date)) {
     throw new Error(`Veuillez renseigner votre date de naissance au format jj/mm/aaaa`)
+
+  // Check if the person is an adult (age >= 18)  
   } if (age < 18) {
     throw new Error(`Vous devez être majeur pour participer`)
   }
@@ -62,32 +68,39 @@ function validateTournament(number) {
 
 // Validate radio button
 function validateRadio(input) {
+
+  // Get all radio buttons as an array
   let listeBtnRadios = input.querySelectorAll('input[type="radio"]')
   let selectedRadio
+
+  // Browse the state of the radio buttons and as soon as a button is checked, store the data and stop the function
   for (let listeBtnRadio of listeBtnRadios) {
     if (listeBtnRadio.checked) {
       selectedRadio = listeBtnRadio.checked
       break
     }
   }
+
+  // Return error if none raddio button are checked
   if (selectedRadio !== true) {
     throw new Error(`Vous devez choisir une ville`)
  }
 }
 
-// validate condition
+// Validate condition of use
 function validateCondition(read) {
   if (read === false) {
     throw new Error(`Veuillez lire et accepter les conditions d'utilisation`)
   }
 }
 
-function validateAuto () {
-}
-
 // Validate form
 function validateForm(input) {
+
+  // Clean all error message
   cleanUp()
+
+  // Create an array containing all the validation functions then we traverse the array
   const fns = {
     first: () => validateName(input.value),
     last: () => validateName(input.value),
