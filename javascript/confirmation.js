@@ -6,7 +6,7 @@ function confirmation(firstName) {
       <div>Merci ${firstName} de ton inscription</div>
       <button class="btn-submit fermerButton">
             Fermer
-          </button>
+      </button>
       `
     modalBody.innerHTML = thanks
   
@@ -22,5 +22,6 @@ function confirmation(firstName) {
     // Close Modal
     document.querySelector(".fermerButton").addEventListener("click", () => {
       closeModal()
+      location = location
     })
-  }
+}
